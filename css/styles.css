@@ -12,6 +12,10 @@
   --hero-background: #2e2f42;
   --white-background: #ffffff;
   --modal-background: #fcfcfc;
+  --anim-fast: 300ms easy-in;
+  --anim-slow: 800ms ease;
+  --modal-idx: 100;
+  --header-idx: 10;
 }
 h1,
 h2,
@@ -37,6 +41,11 @@ button {
   padding: 24px 0;
 }
 .header {
+  position: absolute;
+  top: 20;
+  width: 100%;
+
+  z-index: var(--header-idx);
   border-bottom: 1px solid var(--accent);
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
@@ -55,6 +64,17 @@ button {
   margin-right: 40px;
 }
 
+.link.menu::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+}
+.link.menu.active::after {
+  background-color: var(--pressed-state);
+}
+
 .container {
   width: 1158px;
   margin-left: auto;
@@ -67,6 +87,9 @@ button {
 .nav {
   color: var(--dark);
   align-items: center;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .nav:hover,
 .nav:focus {
@@ -85,6 +108,9 @@ button {
   letter-spacing: 0.02em;
   color: var(--dark);
   padding: 24px 0;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .menu:hover,
 .menu:focus {
@@ -166,6 +192,9 @@ button {
   margin-right: auto;
   min-width: 169px;
   align-items: flex-start;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 
 .hero-button:hover,
@@ -190,6 +219,9 @@ button {
   padding: 12px 24px;
   border: 1px solid var(--accent);
   border-radius: 4px;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .filtr-button:hover,
 .filtr-button:focus {
@@ -370,6 +402,26 @@ button {
   margin-bottom: 8px;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-brand);
+  width: 360px;
+  height: 300px;
+  transform: translateY(100%);
+  transition: transform var(--anim-fast);
+}
+.overlay-text {
+  color: var(--light);
+  padding: 40px 32px;
+}
+.portfolio-thumb {
+  position: relative;
+  overflow: hidden;
+}
 .social-link-team {
   display: flex;
   align-items: center;
@@ -378,6 +430,9 @@ button {
   height: 100%;
   background-color: var(--primary-brand);
   border-radius: 50%;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .social-link-team:hover,
 .social-link-team:focus {
@@ -392,6 +447,9 @@ button {
   height: 100%;
   background-color: var(--primary-brand);
   border-radius: 50%;
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .social-link:hover,
 .social-link:focus {
@@ -451,6 +509,9 @@ button {
   border: 1px solid var(--subtle-text);
   border-radius: 4px;
   color: var(--subtle-text);
+  transition: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
+  transition: color var(--pressed-state);
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -544,6 +605,11 @@ button {
   width: calc((100% - 48px) / 3);
   border-radius: 0px 0px 4px 4px;
 }
+
+.project-card:hover .overlay {
+  transform: translateY(0);
+  transition-delay: 300ms;
+}
 .project-card-link {
   display: block;
 }
@@ -562,4 +628,60 @@ button {
 .portfolio-box {
   display: flex;
   flex-direction: column;
+}
+/*Modal window*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: var(--modal-idx-idx);
+  transition-delay: 250ms;
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition-delay: 350ms;
+}
+
+.modal {
+  position: absolute;
+  top: calc(50%);
+  left: calc(50%);
+  transform: translate(-50%, -50%);
+
+  width: 408px;
+  height: 584px;
+
+  background-color: var(--modal-background);
+  border-radius: 4px;
+
+  transition: opacity 250ms ease-in, transform 250ms ease-in;
+  transition-delay: 300ms;
+}
+.backdrop.is-hidden .modal {
+  opacity: 0;
+  transform: translateX(-50) translateY(-70);
+  transition-delay: 0ms;
+}
+.modal-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 0;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  background: var(--accent);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+.modal-close-icon {
+  color: var(--dark);
 }
