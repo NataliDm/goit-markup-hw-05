@@ -109,10 +109,10 @@ button {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  color: var(--dark);
+  color: var(--pressed-state);
   padding: 24px 0;
   position: relative;
-  transition: 250ms color var(--pressed-state) cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .menu:hover,
 .menu:focus {
@@ -196,8 +196,6 @@ button {
   margin-right: auto;
   min-width: 169px;
   align-items: flex-start;
-  transition: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
   transition: color var(--pressed-state);
 }
 
@@ -223,8 +221,10 @@ button {
   padding: 12px 24px;
   border: 1px solid var(--accent);
   border-radius: 4px;
-  transition: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   transition: color var(--pressed-state);
 }
 .filtr-button:hover,
@@ -435,7 +435,6 @@ button {
   background-color: var(--primary-brand);
   border-radius: 50%;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
   transition: color var(--pressed-state);
 }
 .social-link-team:hover,
@@ -513,9 +512,9 @@ button {
   border: 1px solid var(--subtle-text);
   border-radius: 4px;
   color: var(--subtle-text);
-  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 250ms;
-  transition: color var(--pressed-state) 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--pressed-state);
 }
 .customers-link:hover,
 .customers-link:focus {
@@ -616,6 +615,7 @@ button {
 }
 .project-card-link {
   display: block;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .project-card-link:hover,
 .project-card-link:focus {
@@ -644,6 +644,8 @@ button {
   backdrop-filter: blur(2px);
   z-index: var(--modal-idx-idx);
   transition-delay: 250ms;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .backdrop.is-hidden {
   opacity: 0;
@@ -665,9 +667,7 @@ button {
   border-radius: 4px;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1) opacity visibility;
   transition-delay: 300ms;
 }
 .backdrop.is-hidden .modal {
