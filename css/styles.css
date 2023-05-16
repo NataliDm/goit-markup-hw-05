@@ -412,7 +412,7 @@ button {
   width: 360px;
   height: 300px;
   transform: translateY(100%);
-  transition: transform var(--anim-fast);
+  transition: 400ms;
 }
 .overlay-text {
   color: var(--light);
