@@ -626,9 +626,11 @@ input::placeholder {
   pointer-events: auto;
 }
 .modal {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   background-color: #fff;
-  max-width: 408px;
+  width: 408px;
   min-height: 584px;
   padding-left: 24px;
   padding-right: 24px;
@@ -647,6 +649,7 @@ input::placeholder {
 .btn-close {
   position: absolute;
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   width: 24px;
   height: 24px;
   top: 24px;
