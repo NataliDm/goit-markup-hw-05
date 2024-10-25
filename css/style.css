@@ -578,6 +578,7 @@ input::placeholder {
 }
 .footer-form {
   display: flex;
+  gap: 24px;
 }
 .button-footer {
   margin-left: 16px;
@@ -629,6 +630,7 @@ input::placeholder {
   position: absolute;
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #fff;
   width: 408px;
   min-height: 584px;
@@ -721,6 +723,7 @@ input::placeholder {
 }
 .icon-input {
   position: relative;
+  margin-bottom: 8px;
 }
 .input-frame {
   width: 100%;
@@ -805,4 +808,7 @@ input::placeholder {
 }
 .link-privacy {
   color: #4d5ae5;
+}
+.icon-position {
+  position: relative;
 }
