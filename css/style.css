@@ -796,7 +796,6 @@ input:focus + svg {
   margin-bottom: 24px;
 }
 .checkbox-label {
-  display: flex;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
