@@ -787,7 +787,7 @@ input:focus + svg {
 .checkbox-input:checked + .checkbox-label span {
   background-color: #404bbf;
   border: none;
-  fill: ##f4f4fd;
+  fill: #f4f4fd;
 }
 .comment {
   margin-bottom: 16px;
@@ -796,7 +796,7 @@ input:focus + svg {
   margin-bottom: 24px;
 }
 .checkbox-label {
-  display: flex;
+  display: inline-flex;
   font-size: 12px;
   line-height: 1.17;
   letter-spacing: 0.04em;
@@ -810,7 +810,6 @@ input:focus + svg {
   border: 1px solid rgba(46, 47, 66, 0.4);
   position: absolute;
   right: 23px;
-  display: inline-flex;
 }
 
 .police-privacy {
